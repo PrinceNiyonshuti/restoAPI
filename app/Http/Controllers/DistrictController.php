@@ -52,6 +52,7 @@ class DistrictController extends Controller
     public function show($id)
     {
         //
+        return District::find($id);
     }
 
     /**
@@ -74,7 +75,15 @@ class DistrictController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //update district
+        $existingDistrict =  District::find($id);
+        if($existingDistrict){
+            $existingDistrict->districtName = $request->district["districtName"];
+            $existingDistrict->save();
+            return $existingDistrict;
+        }
+
+        return "No District Found";
     }
 
     /**
@@ -85,6 +94,13 @@ class DistrictController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //Delete district
+        $existingDistrict =  District::find($id);
+        if($existingDistrict){
+            $existingDistrict->delete();
+            return "District deleted successfully";
+        }
+
+        return "No District Found";
     }
 }
