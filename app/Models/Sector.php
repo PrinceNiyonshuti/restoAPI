@@ -14,4 +14,9 @@ class Sector extends Model
     {
         return $this->belongsTo(District::class);
     }
+
+    // restaurant
+    public function restaurants(){
+        return $this->hasMany(Restaurant::class);
+    }
 }

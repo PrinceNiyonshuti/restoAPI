@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Restaurant extends Model
 {
     use HasFactory;
+
+    // sector relationship
+    public function sector()
+    {
+        $this->belongsTo(Sector::class);
+    }
 }
