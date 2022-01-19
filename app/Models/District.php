@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class District extends Model
 {
     use HasFactory;
+
+    // sector relationship
+    public function sectors()
+    {
+        return $this->hasMany(Sector::class);
+    }
 }
