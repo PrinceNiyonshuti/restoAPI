@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\SectorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -34,4 +35,12 @@ Route::prefix('/sectors')->group(function (){
     Route::post('/store',[SectorController::class,'store']);
     Route::put('/{id}',[SectorController::class,'update']);
     Route::delete('/{id}',[SectorController::class,'destroy']);
+});
+
+Route::get('/restaurants',[RestaurantController::class,'index']);
+Route::get('/restaurants/{id}',[RestaurantController::class,'show']);
+Route::prefix('/restaurants')->group(function (){
+    Route::post('/store',[RestaurantController::class,'store']);
+    Route::post('/{id}',[RestaurantController::class,'update']);
+    Route::delete('/{id}',[RestaurantController::class,'destroy']);
 });

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
@@ -13,7 +14,8 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        //
+        //get all restaurant
+        return Restaurant::latest()->get();
     }
 
     /**
@@ -34,7 +36,20 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //new restaurant
+        $newResto = new Restaurant;
+        $newResto->sector_id = $request['sector_id'];
+        $newResto->restoName = $request['restoName'];
+        $newResto->rating = $request['rating'];
+        $newResto->location = $request['location'];
+        if (isset($request['thumbnail'])){
+            $newResto->thumbnail = $request->file('thumbnail')->store('restaurant');
+        }else{
+            $newResto->thumbnail = $request['null'];
+        }
+        $newResto->save();
+        return $newResto;
+
     }
 
     /**
@@ -45,7 +60,8 @@ class RestaurantController extends Controller
      */
     public function show($id)
     {
-        //
+        //get single restaurant
+        return Restaurant::find($id);
     }
 
     /**
@@ -68,7 +84,22 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $existingResto =  Restaurant::find($id);
+        if($existingResto){
+            $existingResto->sector_id = $request['sector_id'];
+            $existingResto->restoName = $request['restoName'];
+            $existingResto->rating = $request['rating'];
+            $existingResto->location = $request['location'];
+            if (isset($request['thumbnail'])){
+                $existingResto->thumbnail = $request->file('thumbnail')->store('restaurant');
+            }else{
+                $existingResto->thumbnail = $request['null'];
+            }
+            $existingResto->save();
+            return $existingResto;
+        }
+        return $existingResto;
+        return "No Sector Found";
     }
 
     /**
@@ -80,5 +111,10 @@ class RestaurantController extends Controller
     public function destroy($id)
     {
         //
+        $existingResto = Restaurant::find($id);
+        if($existingResto){
+            $existingResto->delete();
+            return "Restaurant successfully deleted";
+        }
     }
 }
