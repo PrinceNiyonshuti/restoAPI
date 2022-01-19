@@ -14,7 +14,7 @@ class DishController extends Controller
      */
     public function index()
     {
-        //get all dishes 
+        //get all dishes
         return Dish::latest()->get();
     }
 
@@ -36,7 +36,20 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //new dish
+        $newDish = new Dish;
+        $newDish->restaurant_id = $request['restaurant_id'];
+        $newDish->dishName = $request['dishName'];
+        $newDish->dishPrice = $request['dishPrice'];
+        $newDish->serveTime = $request['serveTime'];
+        $newDish->ingredients = $request['ingredients'];
+        if (isset($request['dishImg'])){
+            $newDish->dishImg = $request->file('dishImg')->store('restaurant');
+        }else{
+            $newDish->dishImg = $request['null'];
+        }
+        $newDish->save();
+        return $newDish;
     }
 
     /**

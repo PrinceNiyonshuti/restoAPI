@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DishController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\SectorController;
@@ -45,10 +46,10 @@ Route::prefix('/restaurants')->group(function (){
     Route::delete('/{id}',[RestaurantController::class,'destroy']);
 });
 
-Route::get('/dishes',[RestaurantController::class,'index']);
-Route::get('/dishes/{id}',[RestaurantController::class,'show']);
+Route::get('/dishes',[DishController::class,'index']);
+Route::get('/dishes/{id}',[DishController::class,'show']);
 Route::prefix('/dishes')->group(function (){
-    Route::post('/store',[RestaurantController::class,'store']);
-    Route::post('/{id}',[RestaurantController::class,'update']);
-    Route::delete('/{id}',[RestaurantController::class,'destroy']);
+    Route::post('/store',[DishController::class,'store']);
+    Route::post('/{id}',[DishController::class,'update']);
+    Route::delete('/{id}',[DishController::class,'destroy']);
 });

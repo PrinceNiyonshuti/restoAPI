@@ -17,10 +17,10 @@ class CreateDishesTable extends Migration
             $table->id();
             $table->foreignId('restaurant_id');
             $table->text('dishName');
-            $table->text('dishImg');
             $table->integer('dishPrice');
             $table->text('serveTime');
             $table->text('ingredients');
+            $table->text('dishImg')->nullable();;
             $table->timestamps();
         });
     }
