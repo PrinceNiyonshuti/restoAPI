@@ -61,6 +61,7 @@ class DishController extends Controller
     public function show($id)
     {
         //
+        return Dish::find($id);
     }
 
     /**
