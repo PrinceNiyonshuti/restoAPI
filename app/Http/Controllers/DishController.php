@@ -84,7 +84,7 @@ class DishController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //update dish
         $updatedDish = Dish::find($id);
         if($updatedDish){
             $updatedDish->restaurant_id = $request['restaurant_id'];
@@ -111,7 +111,7 @@ class DishController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //delete dish
 
         $actualDish = Dish::find($id);
         if($actualDish){
