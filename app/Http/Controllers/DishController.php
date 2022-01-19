@@ -44,7 +44,7 @@ class DishController extends Controller
         $newDish->serveTime = $request['serveTime'];
         $newDish->ingredients = $request['ingredients'];
         if (isset($request['dishImg'])){
-            $newDish->dishImg = $request->file('dishImg')->store('restaurant');
+            $newDish->dishImg = $request->file('dishImg')->store('dish');
         }else{
             $newDish->dishImg = $request['null'];
         }
@@ -85,8 +85,24 @@ class DishController extends Controller
     public function update(Request $request, $id)
     {
         //
-    }
+        $updatedDish = Dish::find($id);
+        if($updatedDish){
+            $updatedDish->restaurant_id = $request['restaurant_id'];
+            $updatedDish->dishName = $request['dishName'];
+            $updatedDish->dishPrice = $request['dishPrice'];
+            $updatedDish->serveTime = $request['serveTime'];
+            $updatedDish->ingredients = $request['ingredients'];
+            if (isset($request['dishImg'])){
+                $updatedDish->dishImg = $request->file('dishImg')->store('dish');
+            }else{
+                $updatedDish->dishImg = $request['null'];
+            }
+            $updatedDish->save();
+            return $updatedDish;
+        }
 
+        return "No dish found";
+    }
     /**
      * Remove the specified resource from storage.
      *
