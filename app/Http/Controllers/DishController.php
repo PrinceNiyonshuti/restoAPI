@@ -112,5 +112,11 @@ class DishController extends Controller
     public function destroy($id)
     {
         //
+
+        $actualDish = Dish::find($id);
+        if($actualDish){
+            $actualDish->delete();
+            return "Dish deleted successfully";
+        }
     }
 }
