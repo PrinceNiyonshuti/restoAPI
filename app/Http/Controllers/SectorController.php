@@ -38,7 +38,7 @@ class SectorController extends Controller
     {
         //new sector
         $newSector = new Sector;
-        $newSector->sectorName = $request->sector["sectorName"];
+        $newSector->district_id = $request->sector["district_id"];
         $newSector->sectorName = $request->sector["sectorName"];
         $newSector->save();
         return $newSector;
@@ -53,6 +53,7 @@ class SectorController extends Controller
     public function show($id)
     {
         //
+        return Sector::find($id);
     }
 
     /**
@@ -75,7 +76,16 @@ class SectorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //update sector
+        $existingSect =  Sector::find($id);
+        if($existingSect){
+            $existingSect->district_id = $request->sector["district_id"];
+            $existingSect->sectorName = $request->sector["sectorName"];
+            $existingSect->save();
+            return $existingSect;
+        }
+
+        return "No Sector Found";
     }
 
     /**
@@ -86,6 +96,11 @@ class SectorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //delete sector
+        $existingSect =  Sector::find($id);
+        if($existingSect){
+            $existingSect->delete();
+            return "Sector successfully deleted";
+        }
     }
 }
