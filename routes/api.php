@@ -44,3 +44,11 @@ Route::prefix('/restaurants')->group(function (){
     Route::post('/{id}',[RestaurantController::class,'update']);
     Route::delete('/{id}',[RestaurantController::class,'destroy']);
 });
+
+Route::get('/dishes',[RestaurantController::class,'index']);
+Route::get('/dishes/{id}',[RestaurantController::class,'show']);
+Route::prefix('/dishes')->group(function (){
+    Route::post('/store',[RestaurantController::class,'store']);
+    Route::post('/{id}',[RestaurantController::class,'update']);
+    Route::delete('/{id}',[RestaurantController::class,'destroy']);
+});
