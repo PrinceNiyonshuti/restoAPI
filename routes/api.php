@@ -59,3 +59,4 @@ Route::prefix('/dishes')->group(function (){
 // - get all restaurant in a given district
 // - get all restaurant in a given sector
 // - get all dishes in a given restaurant
+// - get a district ,sector , restaurant and dish
