@@ -57,3 +57,4 @@ Route::prefix('/dishes')->group(function (){
 // other altenatives query
 // - get all sectors in a given district
 // - get all restaurant in a given sector
+// - get all dishes in a given restaurant
