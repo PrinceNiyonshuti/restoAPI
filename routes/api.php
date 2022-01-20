@@ -53,3 +53,7 @@ Route::prefix('/dishes')->group(function (){
     Route::post('/{id}',[DishController::class,'update']);
     Route::delete('/{id}',[DishController::class,'destroy']);
 });
+
+// other altenatives query
+// - get all sectors in a given district
+// - get all restaurant in a given sector
