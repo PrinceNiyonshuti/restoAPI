@@ -16,6 +16,7 @@ class DishController extends Controller
     {
         //get all dishes
         return Dish::latest()->get();
+        // return Dish::with('restaurant')->get();
     }
 
     /**
