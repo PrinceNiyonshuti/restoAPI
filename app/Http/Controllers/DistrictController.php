@@ -15,7 +15,8 @@ class DistrictController extends Controller
     public function index()
     {
         //return all districts
-        return District::latest()->get();
+        return District::with('sectors', 'sectors.restaurants', 'sectors.restaurants.dishes')->get();
+        // return District::latest()->get();
     }
 
     /**
