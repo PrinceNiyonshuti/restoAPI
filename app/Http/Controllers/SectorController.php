@@ -15,7 +15,8 @@ class SectorController extends Controller
     public function index()
     {
         //show all sectors
-        return Sector::latest()->get();
+        return Sector::with('restaurants')->get();
+        // return Sector::latest()->get();
     }
 
     /**
