@@ -12,6 +12,12 @@ class Restaurant extends Model
     // sector relationship
     public function sector()
     {
-        $this->belongsTo(Sector::class);
+        return $this->belongsTo(Sector::class);
+    }
+
+    // dish
+    public function dishes()
+    {
+        return $this->hasMany(Dish::class);
     }
 }
