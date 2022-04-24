@@ -3,6 +3,8 @@
 
 ## Restaurants API
 
+Simple Restaurants API to be consumed by any frontend 
+
 ### after run these script 
     composer install
     cp .env.example .env or copy .env.example .env
