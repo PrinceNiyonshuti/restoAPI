@@ -14,3 +14,7 @@ Simple Restaurants API to be consumed by any frontend
     php artisan storage:link
     php artisan queue:work
     php artisan serve
+
+## Feedback and issues
+
+Any issue and feedback from the app don't hesitate to make an issue
